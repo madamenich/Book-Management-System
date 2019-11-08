@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorator="Layout/Layout">
+<head>
+        <meta charset="UTF-8">
+        <title>Book Management System</title>
+
+    </head>
+    <body>
+    
+
+
+
+<div layout:fragment="content">
+    <div class="card">
+        <div class="card-body">
+            <div th:switch="${categories}" class="container my-3">
+                <p class="my-5">
+                    <a th:href="@{/category/add}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i> Add Category</i></a>
+                </p>
+                <div class="col-sm-12">
+                    <h2 th:case="null">No category yet!</h2>
+                    <div th:case="*">
+                        <table class="table table-striped col-md-12">
+                            <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Title</th>
+
+                                <th class="text-center">Action</th>
+
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="category:${categories}">
+                                <td th:text="${category.id}"></td>
+                                <td th:text="${category.title}"></td>
+
+                                <td class="text-center"><a th:href="@{/category/update/{id}(id=${category.getId()})}" class="btn btn-warning mr-3"><i class="far fa-edit mr-2"></i>Edit</a>
+
+                                <a th:href="@{/category/delete/{id}(id=${category.getId()})}" class="btn btn-danger"><i class="fas fa-minus-circle mr-2"></i>Delete</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

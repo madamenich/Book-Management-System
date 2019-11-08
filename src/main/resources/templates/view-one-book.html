@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorator="Layout/Layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Management System</title>
+
+</head>
+<body>
+
+
+
+
+<div layout:fragment="content">
+
+    <div class="px-2 py-2" th:object="${book}">
+        <div class="row">
+            <a type="button" class="btn btn-default btn-rounded ml-3" th:href="@{/}"><i class="fas fa-angle-double-left"></i> <span​​​> Go back</span></a>
+        </div>
+        <div class="row">
+            <div class="col-md-4  font-weight-bold" >ID</div>
+            <div class="col-md-8"   th:text="*{getId()}"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4  font-weight-bold" >Title</div>
+            <div class="col-md-8" th:text="*{getTitle()}"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4 font-weight-bold" >Author</div>
+            <div class="col-md-8" th:text="*{getAuthor()}"></div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4 font-weight-bold" >Category</div>
+            <div class="col-md-8" th:text="*{getCategory().getTitle()}" ></div>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-4  font-weight-bold" >Description</div>
+            <div class="col-md-8" th:text="*{getDescription()}"></div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
