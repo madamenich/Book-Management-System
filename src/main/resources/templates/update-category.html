@@ -14,14 +14,14 @@
 
 
 <div layout:fragment="content">
-    <h3 class="text-center"> Update Category</h3>
+    <h3 class="text-center"​​ th:text="#{UpdateCategory}"> </h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
                 <form  th:action="'/category/update/'+${category.id}" th:object="${category}" method="post">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="title" class="col-form-label">Title</label> <input type="text" th:field="*{title}"  class="form-control" id="title" placeholder="Title">
+                            <label for="title" class="col-form-label" th:text="#{Title}"></label> <input type="text" th:field="*{title}"  class="form-control" id="title" placeholder="Title">
                         </div>
 
 

@@ -7,21 +7,23 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "tb_books")
 
-        @NamedQuery(name = "findAllBooks",query = "SELECT b FROM Book b")
-        @NamedQuery(name = "updateBook",query = "UPDATE Book b SET b.title =:title, b.author=:author ,b.description=:description,b.category=:category_id WHERE b.id= :id")
-        @NamedQuery(name = "filter",query = "SELECT  b FROM Book b WHERE b.title LIKE ?1")
+//        @NamedQuery(name = "findAllBooks",query = "SELECT b FROM Book b")
+
+//        @NamedQuery(name = "filter",query = "SELECT  b FROM Book b WHERE b.title LIKE ?1")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
    private Integer id;
-
+@NotNull
     private String title;
-
+@NotNull
     private  String author;
-
+@NotNull
     private String description;
+    private String thumbnail ="Default.jpg";
     @ManyToOne
     Category category;
+
 
     public Book() {
     }
@@ -30,6 +32,14 @@ public class Book {
         this.title = title;
         this.author = author;
         this.description = description;
+        this.category = category;
+    }
+
+    public Book(String title, String author, String description, String thumbnail, Category category) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.thumbnail = thumbnail;
         this.category = category;
     }
 
@@ -81,6 +91,14 @@ public class Book {
         this.category = category;
     }
 
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -89,6 +107,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", description='" + description + '\'' +
                 ", category=" + category +
+                ", thumbnail='" + thumbnail + '\'' +
                 '}';
     }
 }

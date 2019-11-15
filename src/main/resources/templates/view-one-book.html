@@ -43,6 +43,11 @@
             <div class="col-md-4  font-weight-bold" >Description</div>
             <div class="col-md-8" th:text="*{getDescription()}"></div>
         </div>
+        <div class="row">
+            <div class="col-md-4  font-weight-bold" th:text="#{Thumbnail}"></div>
+            <div class="col-md-8 "> <img th:src="@{/images/{img}(img=${book.getThumbnail()}) }" width="300px"></div>
+
+        </div>
     </div>
 </div>
 

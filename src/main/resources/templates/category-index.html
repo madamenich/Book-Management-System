@@ -17,7 +17,7 @@
         <div class="card-body">
             <div th:switch="${categories}" class="container my-3">
                 <p class="my-5">
-                    <a th:href="@{/category/add}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i> Add Category</i></a>
+                    <a th:href="@{/category/add}" class="btn btn-primary"><i class="fas fa-plus mr-1"></i><span th:text="#{AddCategory}" ></span></i></a>
                 </p>
                 <div class="col-sm-12">
                     <h2 th:case="null">No category yet!</h2>
@@ -25,10 +25,10 @@
                         <table class="table table-striped col-md-12">
                             <thead>
                             <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Title</th>
+                                <th class="text-center"></th>
+                                <th class="text-center" th:text="#{Title}"></th>
 
-                                <th class="text-center">Action</th>
+                                <th class="text-center"  th:text="#{Action}"></th>
 
                                 
                             </tr>
@@ -38,9 +38,9 @@
                                 <td th:text="${category.id}"></td>
                                 <td th:text="${category.title}"></td>
 
-                                <td class="text-center"><a th:href="@{/category/update/{id}(id=${category.getId()})}" class="btn btn-warning mr-3"><i class="far fa-edit mr-2"></i>Edit</a>
+                                <td class="text-center"><a th:href="@{/category/update/{id}(id=${category.getId()})}" class="btn btn-warning mr-3"><i class="far fa-edit mr-2"></i><span th:text="#{Edit}"></span></a>
 
-                                <a th:href="@{/category/delete/{id}(id=${category.getId()})}" class="btn btn-danger"><i class="fas fa-minus-circle mr-2"></i>Delete</a></td>
+                                <a th:href="@{/category/delete/{id}(id=${category.getId()})}" class="btn btn-danger"><i class="fas fa-minus-circle mr-2"></i><span th:text="#{Delete}"></span></a></td>
                             </tr>
                             </tbody>
                         </table>

@@ -6,6 +6,7 @@ import com.example.bms.service.categoryService.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 @Service
 public class CategoryServiceImp implements CategoryService {
@@ -13,26 +14,28 @@ public class CategoryServiceImp implements CategoryService {
     CategoryRepository categoryRepository;
     @Override
     public List<Category> findAllCategory() {
-        return categoryRepository.findAllCategory();
+        return categoryRepository.findAll();
     }
 
     @Override
     public void insertCategory(Category category) {
-        categoryRepository.insertCategory(category);
+        categoryRepository.save(category);
     }
 
     @Override
     public void updateCategory(Integer id,Category category) {
-        categoryRepository.updateCategory(id,category);
+        categoryRepository.save(category);
     }
 
-    @Override
-    public Category findOne(Integer id) {
-        return categoryRepository.findOne(id);
-    }
+  public Category findOne(Integer id){
+        return  categoryRepository.getOne(id);
+  }
 
     @Override
     public void delete(Integer id) {
-        categoryRepository.delete(id);
+        categoryRepository.deleteById(id);
     }
+
+
 }
+

@@ -12,7 +12,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
+@NotNull
     private String title;
 
     public Category(Integer id) {
@@ -25,6 +25,11 @@ public class Category {
 
     public Category() {
 
+    }
+
+    public Category(Integer id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
     public Integer getId() {

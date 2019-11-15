@@ -12,28 +12,29 @@
 
 
 <div layout:fragment="content">
-    <h3 class="text-center"> Add New Book</h3>
-    <a type="button" class="btn btn-default btn-rounded ml-3" th:href="@{/}"><i class="fas fa-angle-double-left"></i> <span​​​> Go back</span></a>
+
     <div class="card">
       
         <div class="card-body">
+            <h3 class="text-center" th:text="#{AddBook}"></h3>
+
             <div class="col-md-10">
-                <form action="#" th:action="@{/add}" th:object="${book}" method="post">
+                <form  th:action="@{/add}" th:object="${book}" method="post"  enctype="multipart/form-data">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="title" class="col-form-label">Title</label>
+                            <label for="title" class="col-form-label" th:text="#{Title}"></label>
                             <span th:if="${#fields.hasErrors('title')}"  class="text-danger">Please Add Book title</span>
                             <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Title">
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="author" class="col-form-label">Author</label> <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="Author">
+                            <label for="author" class="col-form-label" th:text="#{Author}"></label> <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="Author">
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="description" class="col-form-label">Description</label> <input type="text" th:field="*{description}" class="form-control" id="description" placeholder="Description">
+                            <label for="description" class="col-form-label" th:text="#{Description}"></label> <input type="text" th:field="*{description}" class="form-control" id="description" placeholder="Description">
                         </div>
 
                         <div class="form-group col-md-8">
-                                <label for="cate" class="col-form-label">Category Type</label>
+                                <label for="cate" class="col-form-label" th:text="#{Category}"></label>
                                 <select th:field="${book.category.id}" class="browser-default custom-select" id="cate">
                                         <option
                                                 th:each="cate:${categories}"
@@ -43,12 +44,19 @@
             
                                     </select>
                         </div>
-                        
+
+                        <div class="form-group col-md-8">
+                            <label class="custom-file-label" for="inputGroupFile01"  th:text="#{ChooseFile}"> </label>
+                            <input type="file" class="custom-file-input ml-2" id="inputGroupFile01"
+                                   aria-describedby="inputGroupFileAddon01" name="file">
+
+
+                        </div>
                         <div class="col-md-6">
+                            <a type="button" class="btn btn-default btn-rounded ml-3" th:href="@{/}"><i class="fas fa-angle-double-left"></i> <span th:text="#{GoBack}"​​​></span></a>
                             <input type="submit" class="btn btn-success" value="Add Book">
                         </div>
 
-                        <div class="form-group col-md-8"></div>
 
                     </div>
                 </form>

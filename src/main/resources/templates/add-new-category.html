@@ -13,20 +13,20 @@
 
 
 <div layout:fragment="content">
-    <h3 class="text-center"> Add New Category</h3>
+    <h3 class="text-center" th:text="#{AddCategory}"></h3>
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
                 <form  th:action="@{/category/add}" th:object="${category}" method="post">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="title" class="col-form-label">Title</label> <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Title">
+                            <label for="title" class="col-form-label" th:text="#{Title}"></label> <input type="text" th:field="*{title}" class="form-control" id="title" placeholder="Title">
                             <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger">Please add title</span>
                         </div>
 
 
                         <div class="col-md-6">
-                            <input type="submit" class="btn btn-success" value="Add Category">
+                            <input type="submit" class="btn btn-success"  value=" Add Category">
                         </div>
 
                         <div class="form-group col-md-8"></div>

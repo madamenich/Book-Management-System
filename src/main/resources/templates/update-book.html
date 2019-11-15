@@ -13,28 +13,27 @@
 
 
 
-<div class="container my-5">
-    <h4 class="text-center"> Update Book Infomation</h4>
-    <div class="row">
-            <a type="button" class="btn btn-default btn-rounded ml-3" th:href="@{/}"><i class="fas fa-angle-double-left"></i> <span​​​> Go back</span></a>
-        </div>
+<div layout:fragment="content">
+
+
     <div class="card">
         <div class="card-body">
             <div class="col-md-10">
-                <form action="#" th:action="'/update/'+${book.id}" th:object="${book}" method="post">
+                <h4 class="text-center"> Update Book Infomation</h4>
+                <form action="#" th:action="'/update/'+${book.id}" th:object="${book}" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="title" class="col-form-label">Title</label> <input type="text" th:field="*{title}" th:value="*{getTitle()}" class="form-control" id="title" placeholder="Title">
+                            <label for="title" class="col-form-label" th:text="#{Title}"></label> <input type="text" th:field="*{title}" th:value="*{getTitle()}" class="form-control" id="title" placeholder="Title">
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="author" class="col-form-label">Author</label> <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="Author">
+                            <label for="author" class="col-form-label" th:text="#{Author}"></label> <input type="text" th:field="*{author}" class="form-control" id="author" placeholder="Author">
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="description" class="col-form-label">Description</label> <input type="text" th:field="*{description}" class="form-control" id="description" placeholder="Description">
+                            <label for="description" class="col-form-label" th:text="#{Description}"></label> <input type="text" th:field="*{description}" class="form-control" id="description" placeholder="Description">
                         </div>
 
                         <div class="form-group col-md-8">
-                                <label for="cate" class="col-form-label">Category Type</label>
+                                <label for="cate" class="col-form-label" th:text="#{Category}"></label>
                                 <select th:field="${book.category.id}" class="browser-default custom-select" id="cate">
                                         <option
                                                 th:each="cate:${categories}"
@@ -45,12 +44,23 @@
             
                                     </select>
                         </div>
-                       
-                        <div class="col-md-6">
-                            <input type="submit" class="btn btn-success" value="Save Update">
+                        <div class="form-group col-md-8" >
+
+                            <div class="custom-file">
+                                <input type="hidden"  th:value="*{getThumbnail()}" th:field="${book.thumbnail}">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                       aria-describedby="inputGroupFileAddon01" name="file" style="display:none;">
+                                <label class="custom-file-label" for="inputGroupFile01"  th:text="#{ChooseFile}"></label>
+                            </div>
                         </div>
 
-                        <div class="form-group col-md-8"></div>
+
+                        <div class="col-md-6">
+                            <a type="button" class="btn btn-default btn-rounded ml-3" th:href="@{/}"><i class="fas fa-angle-double-left"></i> <span th:text="#{GoBack}"​​​></span></a>
+                            <input type="submit" class="btn btn-success" value="Update Book" >
+                        </div>
+
+
 
                     </div>
                 </form>
